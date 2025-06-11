@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}{% if mode == 'edit' %}Edit Entry{% else %}Add Entry{% endif %}{% endblock %}
+{% block content %}
+<h2>{% if mode == 'edit' %}Edit{% else %}Add{% endif %} Job Entry</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">{% if mode == 'edit' %}Update{% else %}Save{% endif %}</button>
+</form>
+{% endblock %}

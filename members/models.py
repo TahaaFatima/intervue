@@ -9,6 +9,7 @@ class InterviewEntry(models.Model):
     job_title   = models.CharField(max_length=100)
     company     = models.CharField(max_length=100)
     description = models.TextField()
+    resume      = models.FileField(upload_to='resumes/', null=True, blank=True)
 
     def __str__(self):
         return f"{self.job_title} at {self.company} on {self.date}"

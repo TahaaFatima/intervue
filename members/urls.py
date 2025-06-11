@@ -7,4 +7,6 @@ urlpatterns = [
     path('login/', views.CustomLoginView.as_view(), name='login'),
     path('logout/', views.CustomLogoutView.as_view(), name='logout'),
     path('dashboard/', views.dashboard, name='dashboard'),
+    path('add-entry/', views.add_entry, name='add_entry'),
+    path('edit-entry/<int:entry_id>/', views.edit_entry, name='edit_entry'),
 ]

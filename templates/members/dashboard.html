@@ -1,6 +1,51 @@
 {% extends "base.html" %}
 {% block title %}Dashboard{% endblock %}
 {% block content %}
-<h2>Welcome to your Dashboard!</h2>
-<p>You are logged in as {{ user.username }}</p>
+<h2>Your Interview Calendar</h2>
+<div id="calendar"></div>
+
+<!-- FullCalendar CDN -->
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+
+<!-- Pass JSON safely into JS -->
+<script id="event-data" type="application/json">
+    {{ events_json|safe }}
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const calendarEl = document.getElementById('calendar');
+    const eventData = JSON.parse(document.getElementById('event-data').textContent);
+
+    const calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth',
+      events: eventData,
+      
+      eventContent: function(arg) {
+        let title = document.createElement('span');
+        title.textContent = arg.event.title;
+
+        let editLink = document.createElement('a');
+        editLink.href = `/members/edit-entry/${arg.event.id}/`;
+        editLink.innerHTML = ' ✏️';  // 🖉 edit icon
+        editLink.style.marginLeft = '5px';
+        editLink.title = 'Edit entry';
+
+        let container = document.createElement('div');
+        container.appendChild(title);
+        container.appendChild(editLink);
+
+        return { domNodes: [container] };
+      },
+
+      dateClick: function(info) {
+        const selectedDate = info.dateStr;
+        window.location.href = `/members/add-entry/?date=${selectedDate}`;
+      }
+    });
+
+    calendar.render();
+  });
+</script>
 {% endblock %}
