@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login
+from django.contrib.auth.models import User
+from django.contrib import messages
 from django.contrib.auth.views import LoginView, LogoutView
 from django.core.serializers.json import DjangoJSONEncoder
 from .forms import RegisterForm, CustomLoginForm, InterviewEntryForm
@@ -10,10 +12,18 @@ from .utils import suggest_questions
 # Register view
 def register(request):
     if request.method == 'POST':
-        form = RegisterForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)  # Auto-login after registration
+        username = request.POST['username'].strip()
+        email    = request.POST['email'].strip()
+        password = request.POST['password']
+        confirm  = request.POST['confirm_password']
+
+        if password != confirm:
+            messages.error(request, "Passwords do not match.")
+        elif User.objects.filter(username=username).exists():
+            messages.error(request, "Username already taken.")
+        else:
+            user = User.objects.create_user(username=username, password=password)
+            login(request, user)  # Auto login after registration
             return redirect('dashboard')
     else:
         form = RegisterForm()

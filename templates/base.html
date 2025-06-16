@@ -1,14 +1,65 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Interview Prep{% endblock %}</title>
+    <title>{% block title %}Intervue{% endblock %}</title>
         <!-- Add in the <head> -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{% static 'members/css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'members/css/bootstrap-icons.css' %}" rel="stylesheet">
+        <!-- <link href="{% static 'members/css/login.css' %}" type="text/css" rel="stylesheet" > -->
+        <link rel="stylesheet" href="{% static 'members/css/style.css' %}">
+        {% block css %}{% endblock %}
 </head>
 <body>
     <header>
-        <h1><a href="{% url 'home' %}">Interview Prep</a></h1>
+        <nav class="navbar navbar-expand-lg bg-light shadow-lg">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'home' %}">
+                    <img src="{% static 'members/images/logo3.png' %}" class="logo img-fluid" alt="Intervue">
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="{% url 'home' %}">Home</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="#section_2">About</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="#section_3">Jobs</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="#section_4">Contact</a>
+                        </li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item ms-3">
+                            <form method="post" action="{% url 'logout' %}">
+                                {% csrf_token %}
+                                <button type="submit">Logout</button>
+                            </form>
+                        </li>
+                        {% else %}
+                        <li class="nav-item ms-3">
+                            <a class="nav-link custom-btn custom-border-btn btn" href="{% url 'login' %}">Login</a>
+                        </li>
+                        <li class="nav-item ms-3">
+                            <a class="nav-link custom-btn custom-border-btn btn" href="{% url 'register' %}">Sign Up</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- <h1><a href="{% url 'home' %}">Interview Prep</a></h1>
         {% if user.is_authenticated %}
             <p>Welcome, {{ user.username }}
                 <form method="post" action="{% url 'logout' %}">
@@ -20,8 +71,47 @@
             <a href="{% url 'login' %}">Login</a> |
             <a href="{% url 'register' %}">Register</a>
         {% endif %}
-        <hr>
+        <hr> -->
     </header>
     {% block content %}{% endblock %}
+
+    <footer class="site-footer" id="section_4">
+      <div class="container">
+          <div class="row">
+                  <h5 class="site-footer-title mb-3">Contact Infomation</h5>
+
+                  <p class="text-white d-flex mb-2">
+                      <i class="bi-telephone me-2"></i>
+
+                      <a href="tel: +1 (234)5678910" class="site-footer-link">
+                          +1 (234)5678910
+                      </a>
+                  </p>
+
+                  <p class="text-white d-flex">
+                      <i class="bi-envelope me-2"></i>
+
+                      <a href="mailto:intervue@email.com" class="site-footer-link">
+                          intervue@email.com
+                      </a>
+                  </p>
+
+                  <p class="text-white d-flex mt-3">
+                      <i class="bi-geo-alt me-2"></i>
+                      GTA, Ontario
+                  </p>
+
+              
+          </div>
+      </div>
+    </footer>
+
+    <!-- JAVASCRIPT FILES -->
+    <script src="{% static 'members/js/jquery.min.js'%}"></script>
+    <script src="{% static 'members/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'members/js/jquery.sticky.js'%}"></script>
+    <script src="{% static 'members/js/click-scroll.js' %}"></script>
+    <script src="{% static 'members/js/counter.js' %}"></script>
+    <script src="{% static 'members/js/custom.js' %}"></script>
 </body>
 </html>

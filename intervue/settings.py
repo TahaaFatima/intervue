@@ -134,6 +134,13 @@ LOGIN_URL = 'login'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+# Base static files settings
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
 load_dotenv()
 
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")

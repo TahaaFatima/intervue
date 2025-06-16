@@ -1,10 +1,37 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}Login{% endblock %}
+{% block css %}
+    <link href="{% static 'members/css/login.css' %}" type="text/css" rel="stylesheet" >
+{% endblock %}
+
 {% block content %}
-<h2>Login</h2>
-<form method="post">
+<main>
+    <section>
+        <div class="margin-5">
+            <div class="login-container">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" placeholder="Enter your username" required>
+                    </div>
+                    <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="login-btn">Login</button>
+                </form>
+                <div class="footer-text">
+                    Don't have an account? <a href="{% url 'register' %}">Sign up</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main> 
+<!-- <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Login</button>
-</form>
+</form> -->
 {% endblock %}

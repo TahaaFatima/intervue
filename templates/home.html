@@ -1,6 +1,195 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title %}Home{% endblock %}
 {% block content %}
-<h2>Welcome to Interview Prep App</h2>
-<p>Helping you ace every interview.</p>
+<main>
+    <section class="hero-section hero-section-full-height">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-12 p-0">
+                    <div id="hero-slide" class="carousel carousel-fade slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="{% static 'members/images/interview1.jpeg' %}" class="carousel-image img-fluid" alt="...">
+                                <div class="carousel-caption d-flex flex-column justify-content-end">
+                                    <h1>InterVue</h1>
+                                    
+                                    <p>A professional job board.</p>
+                                </div>
+                            </div>
+
+                            <div class="carousel-item">
+                                <img src="{% static 'members/images/interview2.jpg' %}" class="carousel-image img-fluid" alt="...">
+                                
+                                <div class="carousel-caption d-flex flex-column justify-content-end">
+                                    <h1>Opportunities</h1>
+                                    
+                                    <p>Just one click away.</p>
+                                </div>
+                            </div>
+
+                            <div class="carousel-item">
+                                <img src="{% static 'members/images/interview3.jpg' %}" class="carousel-image img-fluid" alt="...">
+                                
+                                <div class="carousel-caption d-flex flex-column justify-content-end">
+                                    <h1>InterVue</h1>
+                                    
+                                    <p>Connecting talent with the right job every time.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="carousel-control-prev" type="button" data-bs-target="#hero-slide" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+
+                        <button class="carousel-control-next" type="button" data-bs-target="#hero-slide" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section class="section-padding">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-10 col-12 text-center mx-auto">
+                    <h2 class="mb-5">Our Services</h2>
+                </div>
+                <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
+                    <div class="featured-block d-flex justify-content-center align-items-center">
+                        <a  class="d-block">
+                            <img src="{% static 'members/images/a.png' %}" class="featured-block-image img-fluid" alt="">
+
+                            <p class="featured-block-text"><strong>Centralized Dashboard</strong></p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0 mb-md-4">
+                    <div class="featured-block d-flex justify-content-center align-items-center">
+                        <a  class="d-block">
+                            <img src="{% static 'members/images/b.png' %}" class="featured-block-image img-fluid" alt="">
+
+                            <p class="featured-block-text"><strong>Interview Preparation</strong></p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0 mb-md-4">
+                    <div class="featured-block d-flex justify-content-center align-items-center">
+                        <a  class="d-block">
+                            <img src="{% static 'members/images/c.png' %}" class="featured-block-image img-fluid" alt="">
+
+                            <p class="featured-block-text"><strong>Successful Submission</strong></p>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0 mb-md-4">
+                    <div class="featured-block d-flex justify-content-center align-items-center">
+                        <a  class="d-block">
+                            <img src="{% static 'members/images/d.png' %}" class="featured-block-image img-fluid" alt="">
+
+                            <p class="featured-block-text"><strong>Customization Tools</strong></p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section-padding section-bg" id="section_2">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-6 col-12 mb-5 mb-lg-0">
+                    <img src="{% static 'members/images/women.jpeg' %}" class="custom-text-box-image img-fluid" alt="">
+                </div>
+
+                <div class="col-lg-6 col-12">
+                    <div class="custom-text-box">
+                        <h2 class="mb-2">Our Story</h2>
+
+                        <h5 class="mb-3">InterVue, Job Board Application</h5>
+
+                        <p class="mb-0">A dynamic group of six passionate women from diverse tech backgrounds came together to address a common challenge faced by job seekers with disorganized interview preparation. As part of a Women in Tech initiative, they collaborated to create InterVue, a centralized web application designed to help users manage interview preparation, track applications, and increase their chances of success. Our web application, InterVue, is a centralized and user-friendly platform that empowers users to take control of their career journey. It helps them organize interview materials, manage deadlines, track job applications, and prepare with confidence in one place. By leveraging our unique skill sets in backend development, frontend design, business analysis, and quality assurance, we created InterVue not just as a tool, but as a companion for career growth.
+Our mission is to foster accessibility, confidence, and success in the job market.</p>
+                    </div>
+                    
+                </div>    
+
+            </div>
+        </div>
+    </section>
+    <section class="section-padding" id="section_3">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-12 col-12 text-center mb-4">
+                    <h2>Jobs For You</h2>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
+                    <div class="custom-block-wrap">
+                        
+                        <div class="custom-block">
+                            <div class="custom-block-body">
+                                <h5 class="mb-3">Job 1</h5>
+
+                                <p>...</p>
+
+                                
+
+                                
+                            </div>
+
+                            <a href="login.html" class="custom-btn btn">Apply Now</a>
+                            <a href="login.html" class="custom-btn btn">Save</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
+                    <div class="custom-block-wrap">
+                        
+                        <div class="custom-block">
+                            <div class="custom-block-body">
+                                <h5 class="mb-3">Job 2</h5>
+
+                                <p>...</p>
+
+                                
+                            </div>
+
+                            <a href="login.html" class="custom-btn btn">Apply Now</a>
+                            <a href="login.html" class="custom-btn btn">Save</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="custom-block-wrap">
+                        
+                        <div class="custom-block">
+                            <div class="custom-block-body">
+                                <h5 class="mb-3">Job 3</h5>
+
+                                <p>...</p>
+
+                                
+                            </div>
+
+                            <a href="login.html" class="custom-btn btn">Apply Now</a>
+                            <a href="login.html" class="custom-btn btn">Save</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</main>
 {% endblock %}
