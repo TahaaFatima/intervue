@@ -49,6 +49,7 @@ def add_entry(request):
         if form.is_valid():
             entry = form.save(commit=False)
             entry.user = request.user
+            entry.questions = suggest_questions(entry.description)  # Save generated questions
             entry.save()
             # return redirect('dashboard')
             questions = suggest_questions(entry.description)
@@ -73,6 +74,12 @@ def edit_entry(request, entry_id):
     else:
         form = InterviewEntryForm(instance=entry)
     return render(request, 'members/entry_form.html', {'form': form, 'mode' : 'edit'})
+
+@login_required
+def view_questions(request, entry_id):
+    entry = get_object_or_404(InterviewEntry, id=entry_id, user=request.user)
+    return render(request, 'members/view_questions.html', {'entry': entry})
+
 
 class CustomLogoutView(LogoutView):
     next_page = 'home'  # Redirect after logout

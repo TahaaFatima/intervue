@@ -26,6 +26,11 @@
         let title = document.createElement('span');
         title.textContent = arg.event.title;
 
+        const viewLink = document.createElement('a');
+        viewLink.href = `/members/view-questions/${arg.event.id}/`;
+        viewLink.innerHTML = ' 📋';
+        viewLink.title = 'View Questions';
+
         let editLink = document.createElement('a');
         editLink.href = `/members/edit-entry/${arg.event.id}/`;
         editLink.innerHTML = ' ✏️';  // 🖉 edit icon
@@ -34,6 +39,7 @@
 
         let container = document.createElement('div');
         container.appendChild(title);
+        container.appendChild(viewLink);
         container.appendChild(editLink);
 
         return { domNodes: [container] };

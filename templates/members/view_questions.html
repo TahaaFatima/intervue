@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Saved Questions{% endblock %}
+{% block content %}
+<h2>Interview Questions for {{ entry.job_title }} at {{ entry.company }}</h2>
+
+{% if entry.questions %}
+    <pre style="white-space: pre-wrap;">{{ entry.questions }}</pre>
+{% else %}
+    <p><em>No questions generated yet.</em></p>
+{% endif %}
+
+<a href="{% url 'dashboard' %}">← Back to Dashboard</a>
+{% endblock %}

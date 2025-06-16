@@ -9,4 +9,5 @@ urlpatterns = [
     path('dashboard/', views.dashboard, name='dashboard'),
     path('add-entry/', views.add_entry, name='add_entry'),
     path('edit-entry/<int:entry_id>/', views.edit_entry, name='edit_entry'),
+    path('view-questions/<int:entry_id>/', views.view_questions, name='view_questions'),
 ]

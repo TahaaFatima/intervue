@@ -2,9 +2,11 @@
 {% block title %}{% if mode == 'edit' %}Edit Entry{% else %}Add Entry{% endif %}{% endblock %}
 {% block content %}
 <h2>{% if mode == 'edit' %}Edit{% else %}Add{% endif %} Job Entry</h2>
-<form method="post" enctype="multipart/form-data">
+<form method="post" enctype="multipart/form-data" class="p-4 border rounded bg-light">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">{% if mode == 'edit' %}Update{% else %}Save{% endif %}</button>
+    <button type="submit" class="btn btn-success me-2">{% if mode == 'edit' %}Update{% else %}Save{% endif %}</button>
+
+    <a href="{% url 'dashboard' %}" class="btn btn-secondary ms-2">← Back</a>
 </form>
 {% endblock %}
